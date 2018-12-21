@@ -6,7 +6,7 @@ require "pin2018/user"
 module Pin2018
 
   def self.run(options)
-    Server.run!
+    Server.run!(options)
   end
 
   def self.batch(options)

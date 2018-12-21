@@ -1,5 +1,13 @@
 #!/usr/bin/env ruby
 
 require 'pin2018'
+require 'optparse'
 
-Pin2018.run(ARGV)
+option = Hash.new({})
+op = OptionParser.new
+op.on('-p','--port VAL'){ |v| option[:port] = v}
+op.on('-b','--bind VAL'){ |v| option[:bind] = v}
+op.parse! ARGV
+option
+
+Pin2018.run(option)
