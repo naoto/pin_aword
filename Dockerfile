@@ -8,5 +8,3 @@ RUN gem install bundler
 ADD . /pin2018
 WORKDIR /pin2018
 RUN bundle install
-
-EXPOSE 4567
