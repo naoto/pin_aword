@@ -8,3 +8,5 @@ RUN gem install bundler
 ADD . /pin2018
 WORKDIR /pin2018
 RUN bundle install
+
+CMD ["bundle", "exec", "bin/pin2018"]
