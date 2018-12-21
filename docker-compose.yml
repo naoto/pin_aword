@@ -1,0 +1,26 @@
+version: '3.1'
+services:
+  postgres:
+    image: postgres:10
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+  app:
+    build: .
+    command: bundle exec bin/pin2018 -p 4567
+    links:
+      - postgres
+    ports:
+      - "4567:4567"
+    volumes:
+      - .:/pin2018
+    environment:
+      DATABASE_URL: postgres://user:password@postgres:5432/user
+    env_file:
+      - ./.env
+
+volumes:
+  pgdata:
