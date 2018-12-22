@@ -11,6 +11,12 @@ module Pin2018
     set :bind, '0.0.0.0'
     helpers Sinatra::Cookies
 
+    configure do
+      use Rack::Auth::Basic do |username, password|
+        username == ENV['BASIC_AUTH_USERNAME'] && password == ENV['BASIC_AUTH_PASSWORD']
+      end
+    end
+
     get '/' do
       @pins = Pin.order("fav desc, post_date desc")
       if cookies[:fav].nil?
@@ -39,5 +45,10 @@ p @faved
 
       true
     end
+
+    get '/robots.txt' do
+      erb :robots
+    end
+
   end
 end
