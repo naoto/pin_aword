@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: password
   app:
     build: .
-    command: bundle exec bin/pin2018 -p 4567
+    command: bundle exec bin/pin2018
     links:
       - postgres
     ports:
