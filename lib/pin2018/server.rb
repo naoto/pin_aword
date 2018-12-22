@@ -13,7 +13,7 @@ module Pin2018
 
     get '/' do
       @pins = Pin.order("fav desc, post_date desc")
-      if cookies[:fav].empty?
+      if cookies[:fav].nil?
         @faved = []
       else
         @faved = JSON.parse(cookies[:fav])
@@ -29,7 +29,7 @@ p @faved
       pin.save
 
       fav = nil
-      if cookies[:fav].empty?
+      if cookies[:fav].nil?
         fav = []
       else
         fav = JSON.parse(cookies[:fav])
