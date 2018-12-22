@@ -27,4 +27,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "sinatra-contrib"
   spec.add_runtime_dependency "rake"
   spec.add_runtime_dependency "pg"
+  spec.add_runtime_dependency "omniauth"
+  spec.add_runtime_dependency "omniauth-slack"
 end
